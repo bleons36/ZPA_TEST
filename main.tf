@@ -21,13 +21,6 @@ resource "zpa_application_segment" "app_segment_1" {
   enabled        = true
 }
 
-resource "zpa_application_segment" "app_segment_2" {
-  name           = "App Segment 2"
-  description    = "Application Segment for app2.example.com"
-  domain_names   = ["app2.example.com"]
-  enabled        = true
-}
-
 # 변수 설정
 variable "zpa_client_id" {}
 variable "zpa_client_secret" {}
