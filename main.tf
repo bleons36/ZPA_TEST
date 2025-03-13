@@ -2,7 +2,7 @@ terraform {
   required_providers {
     zpa = {
       source  = "zscaler/zpa"
-      version = "~> 4.0.0"
+      version = "latest"
     }
   }
 }
@@ -13,17 +13,22 @@ provider "zpa" {
   customer_id   = var.zpa_customer_id
 }
 
-resource "zpa_access_policy" "example_policy" {
-  name        = "Example Access Policy"
-  description = "An example policy for ZPA"
-  action      = "ALLOW"
-  operator    = "AND"
-  conditions {
-    application = ["example-app"]
-    user       = ["example-user"]
-  }
+# 정책 그룹 생성
+resource "zpa_policy_type" "access_policy" {
+  policy_type = "ACCESS_POLICY"
 }
 
+# ZPA Access Policy Rule 생성 (기본적인 Allow Rule 예제)
+resource "zpa_policy_access_rule" "example_rule" {
+  name          = "Example Access Rule"
+  description   = "Allow access for specific users and applications"
+  action        = "ALLOW"
+  operator      = "AND"
+  policy_set_id = zpa_policy_type.access_policy.id
+
+}
+
+# 변수 설정
 variable "zpa_client_id" {}
 variable "zpa_client_secret" {}
 variable "zpa_customer_id" {}
