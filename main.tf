@@ -12,6 +12,9 @@ provider "zpa" {
   client_id = "MTQ0MTMxOTk2NDMwMzY5ODYyLTY2ZWJlNTBkLTFmNTItNGE0ZS1hMDBkLTJiNTdlMTI2MDI4OQ=="
   client_secret = "-Sl[H]O;#1yu.Mdy70WKC'=$0<V6?bkV"
   zpa_customer_id  = "144131996430368768"
+  zpa_cloud  = "PRODUCTION"
+  use_legacy_client = ture
+
 }
 
 
