@@ -49,11 +49,13 @@ resource "zpa_segment_group" "default" {
   description = "Automatically created segment group"
 }
 
-# ZPA Server Group 생성 (없으면 생성)
+# ZPA Server Group 생성 (필수 값 추가)
 resource "zpa_server_group" "default" {
   name        = "Default Server Group"
   description = "Automatically created server group"
-  dynamic_discovery = false
+  app_connector_groups {
+    id = [zpa_app_connector_group.example.id]
+  }
 }
 
 # 새로운 ZPA Application Segment 생성
