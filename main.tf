@@ -30,6 +30,11 @@ resource "zpa_app_connector_group" "example" {
   use_in_dr_mode                = true
 }
 
+# ZPA Enrollment Certificate 조회
+data "zpa_enrollment_cert" "connector" {
+    name = "TerraformTest"
+}
+
 resource "zpa_provisioning_key" "app_connector_key" {
   name                      = "App Connector Provisioning Key"
   zcomponent_id             = zpa_app_connector_group.example.id
