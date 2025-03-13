@@ -13,19 +13,19 @@ provider "zpa" {
   customer_id   = var.zpa_customer_id
 }
 
-# 정책 그룹 생성
-resource "zpa_policy_type" "access_policy" {
-  policy_type = "ACCESS_POLICY"
+# 새로운 ZPA Application Segments 생성
+resource "zpa_application_segment" "app_segment_1" {
+  name           = "App Segment 1"
+  description    = "Application Segment for app1.example.com"
+  domain_names   = ["app1.example.com"]
+  enabled        = true
 }
 
-# ZPA Access Policy Rule 생성 (기본적인 Allow Rule 예제)
-resource "zpa_policy_access_rule" "example_rule" {
-  name          = "Example Access Rule"
-  description   = "Allow access for specific users and applications"
-  action        = "ALLOW"
-  operator      = "AND"
-  policy_set_id = zpa_policy_type.access_policy.id
-
+resource "zpa_application_segment" "app_segment_2" {
+  name           = "App Segment 2"
+  description    = "Application Segment for app2.example.com"
+  domain_names   = ["app2.example.com"]
+  enabled        = true
 }
 
 # 변수 설정
