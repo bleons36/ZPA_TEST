@@ -2,7 +2,7 @@ terraform {
   required_providers {
     zpa = {
       source  = "zscaler/zpa"
-      version = "latest"
+      version = "~> 4.0.0"
     }
   }
 }
