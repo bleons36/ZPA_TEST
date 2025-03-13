@@ -33,7 +33,7 @@ resource "zpa_app_connector_group" "example" {
 resource "zpa_provisioning_key" "app_connector_key" {
   name                      = "App Connector Provisioning Key"
   zcomponent_id             = zpa_app_connector_group.example.id
-  association_type          = "APP_CONNECTOR"
+  association_type          = "CONNECTOR_GRP"
   max_usage                 = 5
   enrollment_cert_id        = null
 }
