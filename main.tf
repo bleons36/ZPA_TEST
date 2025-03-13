@@ -7,11 +7,13 @@ terraform {
   }
 }
 
+
 provider "zpa" {
-  client_id     = var.zpa_client_id
-  client_secret = var.zpa_client_secret
-  customer_id   = var.zpa_customer_id
+  client_id = "MTQ0MTMxOTk2NDMwMzY5ODYyLTY2ZWJlNTBkLTFmNTItNGE0ZS1hMDBkLTJiNTdlMTI2MDI4OQ=="
+  client_secret = "-Sl[H]O;#1yu.Mdy70WKC'=$0<V6?bkV"
+  zpa_customer_id  = "144131996430368768"
 }
+
 
 # 새로운 ZPA Application Segments 생성
 resource "zpa_application_segment" "app_segment_1" {
