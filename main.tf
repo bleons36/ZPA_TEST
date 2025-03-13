@@ -9,9 +9,9 @@ terraform {
 
 
 provider "zpa" {
-  client_id     = var.zpa_client_id
-  client_secret = var.zpa_client_secret
-  customer_id   = var.zpa_customer_id
+  zpa_client_id = var.zpa_client_id
+  zpa_client_secret = var.zpa_client_secret
+  zpa_customer_id   = var.zpa_customer_id
  # zpa_cloud  = "PRODUCTION"
  # vanity_domain = "lab.expernet.co.kr"
  # use_legacy_client = false
