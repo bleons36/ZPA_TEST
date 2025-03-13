@@ -27,6 +27,8 @@ resource "zpa_application_segment" "app_segment_1" {
   domain_names   = ["app1.example.com"]
   enabled        = true
   segment_group_id  = zpa_segment_group.default.id  # 필수 추가
+  tcp_port_ranges   = ["80", "443"]  # 필수 TCP 포트 설정
+  udp_port_ranges   = ["53"]  # 필수 UDP 포트 설정
 }
 
 # 변수 설정
