@@ -40,7 +40,7 @@ resource "zpa_provisioning_key" "app_connector_key" {
   zcomponent_id             = zpa_app_connector_group.example.id
   association_type          = "CONNECTOR_GRP"
   max_usage                 = 5
-  enrollment_cert_id        = data.zpa_enrollment_cert.default.id
+  enrollment_cert_id        = data.zpa_enrollment_cert.connector.id
 }
 
 # ZPA Segment Group 생성 (없으면 생성)
