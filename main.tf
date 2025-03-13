@@ -53,6 +53,8 @@ resource "zpa_segment_group" "default" {
 resource "zpa_server_group" "default" {
   name        = "Default Server Group"
   description = "Automatically created server group"
+  enabled           = true
+  dynamic_discovery = true
   app_connector_groups {
     id = [zpa_app_connector_group.example.id]
   }
