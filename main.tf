@@ -17,11 +17,11 @@ resource "zpa_app_connector_group" "example" {
   name                          = "Example"
   description                   = "Example"
   enabled                       = true
-  city_country                  = "San Jose, CA"
-  country_code                  = "US"
-  latitude                      = "37.338"
-  longitude                     = "-121.8863"
-  location                      = "San Jose, CA, US"
+  city_country                  = "Seoul, 대한민국"
+  country_code                  = "KR"
+  latitude                      = "37.550263"
+  longitude                     = "126.9970831"
+  location                      = "Seoul, 대한민국"
   upgrade_day                   = "SUNDAY"
   upgrade_time_in_secs          = "66600"
   override_version_profile      = true
@@ -36,7 +36,7 @@ data "zpa_enrollment_cert" "connector" {
 }
 
 resource "zpa_provisioning_key" "app_connector_key" {
-  name                      = "App Connector Provisioning Key"
+  name                      = "Terraform_test"
   zcomponent_id             = zpa_app_connector_group.example.id
   association_type          = "CONNECTOR_GRP"
   max_usage                 = 5
