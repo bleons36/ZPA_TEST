@@ -30,6 +30,14 @@ resource "zpa_app_connector_group" "example" {
   use_in_dr_mode                = true
 }
 
+resource "zpa_provisioning_key" "app_connector_key" {
+  name                      = "App Connector Provisioning Key"
+  zcomponent_id             = zpa_app_connector_group.example.id
+  association_type          = "APP_CONNECTOR"
+  max_usage                 = 5
+  enrollment_cert_id        = null
+}
+
 # ZPA Segment Group 생성 (없으면 생성)
 resource "zpa_segment_group" "default" {
   name        = "Default Segment Group"
