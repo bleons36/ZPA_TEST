@@ -14,7 +14,7 @@ provider "zpa" {
 }
 
 resource "zpa_app_connector_group" "example" {
-  name                          = "Example"
+  name                          = "Terraform CGroup"
   description                   = "Example"
   enabled                       = true
   city_country                  = "Seoul, 대한민국"
@@ -36,7 +36,7 @@ data "zpa_enrollment_cert" "connector" {
 }
 
 resource "zpa_provisioning_key" "app_connector_key" {
-  name                      = "Terraform_test"
+  name                      = "Terraform_Connector"
   zcomponent_id             = zpa_app_connector_group.example.id
   association_type          = "CONNECTOR_GRP"
   max_usage                 = 5
@@ -45,13 +45,13 @@ resource "zpa_provisioning_key" "app_connector_key" {
 
 # ZPA Segment Group 생성 (없으면 생성)
 resource "zpa_segment_group" "default" {
-  name        = "Default Segment Group"
+  name        = "Terraform Segment Group"
   description = "Automatically created segment group"
 }
 
 # ZPA Server Group 생성 (필수 값 추가)
 resource "zpa_server_group" "default" {
-  name        = "Default Server Group"
+  name        = "Terraform_ServerGroup"
   description = "Automatically created server group"
   enabled           = true
   dynamic_discovery = true
@@ -62,12 +62,15 @@ resource "zpa_server_group" "default" {
 
 # 새로운 ZPA Application Segment 생성
 resource "zpa_application_segment" "app_segment_1" {
-  name              = "App Segment 1"
+  name              = "Terraform_App1"
   description       = "Application Segment for app1.example.com"
   domain_names      = ["app1.example.com"]
   enabled           = true
   segment_group_id  = zpa_segment_group.default.id  # 필수 추가
   tcp_port_ranges   = ["80", "443"]
+    server_groups {
+        id = [ zpa_server_group.default.id]
+    }
 } 
 
 
